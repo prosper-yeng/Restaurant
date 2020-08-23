@@ -6,19 +6,19 @@
             {% if error %}
                 <span class="text-danger">{{error}}</span>
             {% endif %}
-            {% if contact_message %}
+            {% if booking_message %}
                 <span class="text-warning h4">Responding To:
-                <strong>{{ contact_message }}</strong>
+                <strong>{{ booking_message.your_name }}</strong>
                 </span>
                 <br>
                 <span>
-                    <span class="text-warning h5">Message: {{ contact_message.message }}</span>
+                    <span class="text-warning h5">Message: {{ booking_message.msg }}</span>
 <br>
                 </span>
 
             {% endif %}
 
-            <form action="{% url 'contact:respond' mid %}" method="post" enctype="multipart/form-data">
+            <form action="{% url 'booking:respond' mid %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
 
 

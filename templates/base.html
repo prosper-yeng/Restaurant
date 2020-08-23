@@ -62,14 +62,31 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="{% url 'home:index' %}">Home</a></li>
-          <li><a href="/#about">About</a></li>
           <li><a href="/#menu">Menu</a></li>
           <li><a href="/#specials">Specials</a></li>
           <li><a href="/#events">Events</a></li>
           <li><a href="/#gallery">Gallery</a></li>
-          <li><a href="/#chefs">Response</a></li>
+          {% if user.is_superuser %}
+            <li>
+            <a class="btn dropdown-toggle text-left" data-toggle="dropdown" href="#">
+              Responses
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu bg-dark">
+              <li>
+                <a href="{% url 'contact:list' %}">Contact Us Messages</a>
+              </li>
+              <li>
+                <a href="{% url 'booking:list' %}">Booking Messages</a>
+              </li>
+            </ul>
+
+          </li>
+
+          {% endif %}
+          <li><a href="/#about">About</a></li>
           <li><a href="/#contact">Contact</a></li>
-          <li class="book-a-table text-center"><a href="#book-a-table">Book a table</a></li>
+          <li class="book-a-table text-center"><a href="/#book-a-table">Book a table</a></li>
         </ul>
       </nav><!-- .nav-menu -->
 

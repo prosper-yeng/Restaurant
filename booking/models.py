@@ -7,7 +7,7 @@ class Booking(models.Model):
     your_name = models.CharField(max_length=100, null=True)
     your_phone = models.CharField(max_length=15, null=True)
     msgemail = models.EmailField(max_length=254, null=True)
-    book_date = models.DateTimeField(blank=True, null=True)
+    book_date = models.DateField(blank=True, null=True)
     book_time = models.TimeField(blank=False, null=True)
     msg = models.TextField(null=True, blank=True)
     persons_number = models.IntegerField(null=True, blank=True)
@@ -20,7 +20,7 @@ class Booking(models.Model):
     has_responded = models.BooleanField(null=True,blank=True,default=False)
 
     def __str__(self):
-        return '{} {}'.format(self.your_name,self.your_phone)
+        return '{}'.format(self.your_name)
 
     class Meta:
         verbose_name_plural = 'Book a Table'

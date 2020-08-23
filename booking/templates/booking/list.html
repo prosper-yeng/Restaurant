@@ -4,55 +4,45 @@
 {% block content %}
     <div>
     <div class="offset-2 col-md-8">
-        <a href="{% url 'home:index' %}#book_table">Book Table</a>
-        <h2>Contact Messages Received</h2>
+
+        <h2>Booking Request Messages</h2>
              <div class="container bg-light">
 
                 <table class="table table-striped table-bordered">
                     <tr>
-                        <td>
-                            Sender
-                        </td>
-                        <td>
-                            phone
-                        </td>
-                        <td>
-                            Email
-                        </td>
-                         <td>
+                        <th>
+                            Sender Info
+                        </th>
+                         <th>
                             Book Date
-                        </td>
-                         <td>
-                            Book Time
-                        </td>
+                        </th>
 
-                        <td>
+                        <th>
                             Message
-                        </td>
-                        <td>
-                            Number of persons
-                        </td>
-                        <td>
-                            Status
-                        </td>
-                        <td></td>
+                        </th>
+                        <th>
+                            # of persons
+                        </th>
+                        <th></th>
                     </tr>
                     {% for item in result_list %}
                         <tr>
                             <td>
                                 {{ item }}
+                                <br>
+                                <span class="icofont-phone">
+                                    {{ item.your_phone }}
+                                </span>
+                                <br>
+                                <span class="icofont-email">
+                                    {{ item.msgemail }}
+                                </span>
                             </td>
+
                             <td>
-                                {{ item.your_phone }}
-                            </td>
-                            <td>
-                                {{ item.msgemail }}
-                            </td>
-                            <td>
-                                {{ item.book_date }}
-                            </td>
-                            <td>
-                                {{ item.book_time }}
+                                <strong>Date:</strong> {{ item.book_date }}
+                                <br>
+                                <strong>Time:</strong>{{ item.book_time }}
                             </td>
 
                             <td>
@@ -62,7 +52,7 @@
                                 {{ item.persons_number }}
                             </td>
                             <td>
-                                <a href="{% url 'contact:respond' item.id %}">Respond</a>
+                                <a href="{% url 'booking:respond' item.id %}">Respond</a>
                             </td>
                         </tr>
                 {% endfor %}

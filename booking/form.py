@@ -11,14 +11,14 @@ class BookingForm(forms.ModelForm):
             'msgemail',
             'book_date',
             'book_time',
+            'msg',
             'persons_number'
         ]
 
 
 class BookingMessageForm(forms.ModelForm):
-    pass
-    # class Meta:
-    #     model = ContactMessage
-    #     fields = [
-    #         'response',
-    #     ]
+    class Meta:
+        model = Booking
+        fields = [
+            'response',
+        ]

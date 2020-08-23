@@ -47,7 +47,7 @@ class ListView(PermissionRequiredMixin, generic.ListView):
     context_object_name = 'result_list'
 
     def get_queryset(self):
-        return Booking.objects.filter(has_responded=False)
+        return Booking.objects.filter(has_responded=False).order_by('-id')
 
 
 class BooingMessageFormView(View):
@@ -91,7 +91,10 @@ def respond(request, mid):
     if request.method == 'POST':
         booking_message = Booking.objects.get(id=mid)
         booking_message.has_responded = True
-        booking_message.response = request.POST.get('response')
+        if booking_message.response:
+            booking_message.response = request.POST.get('response') + '\n' + booking_message.response
+        else:
+            booking_message.response = request.POST.get('response')
 
         msg = request.POST.get('response')
         recipient = [booking_message.msgemail]
@@ -110,3 +113,4 @@ def respond(request, mid):
             'booking_message': booking_message,
         }
     return render(request, 'booking/response.html/',  content)
+

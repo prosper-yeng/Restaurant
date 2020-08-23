@@ -63,12 +63,30 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="{% url 'home:index' %}">Home</a></li>
-          <li><a href="#about">About</a></li>
           <li><a href="#menu">Menu</a></li>
           <li><a href="#specials">Specials</a></li>
           <li><a href="#events">Events</a></li>
           <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#chefs">Chefs</a></li>
+          {% if user.is_superuser %}
+            <li>
+            <a class="btn dropdown-toggle text-left" data-toggle="dropdown" href="#">
+              Responses
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu bg-dark">
+              <li>
+                <a href="{% url 'contact:list' %}">Contact Us Messages</a>
+              </li>
+              <li>
+                <a href="{% url 'booking:list' %}">Booking Messages</a>
+              </li>
+            </ul>
+
+          </li>
+
+          {% endif %}
+
+          <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
           <li class="book-a-table text-center"><a href="#book-a-table">Book a table</a></li>
         </ul>
@@ -110,45 +128,6 @@
     {% endfor %}
 
   <main id="main">
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
-
-
-        <div class="row">
-          <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
-            <div class="about-img">
-              {% if about_us %}
-                <img src="{{about_us.img_url.url}}" alt="" />
-              {% endif %}
-            </div>
-          </div>
-          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-
-            {% if about_us %}
-            <h3>{{about_us.title}}</h3>
-
-            <p class="font-italic">
-              {{about_us.description}}
-            </p>
-            <ul>
-              <li><i class="icofont-check-circled"></i> Vision: {{about_us.vision}}</li>
-              <li><i class="icofont-check-circled"></i> Mission: {{about_us.mission}}</li>
-            </ul>
-            {% endif %}
-
-            <ul>
-              <li><i class="icofont-check-circled"></i>Core Values</li>
-            {% for core in coreObj %}
-                <li><i class="icofont-check"></i>{{core.name}} </li>
-            {% endfor %}
-            </ul>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End About Section -->
 
     <!-- ======= Why Us Section ======= -->
     <section id="why-us" class="why-us">
@@ -535,6 +514,11 @@
               <span class="text-success h4">{{ booking_msg }}</span>
                   <br><br>
               {% endif %}
+        {% if user.is_superuser %}
+            <div class="col-md-12 text-right">
+                <a href="{% url 'booking:list' %}">Booking Requests</a>
+            </div>
+            {% endif %}
 <!--        <form action="{% url 'booking:index' %}"  method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">-->
          <form action="{% url 'booking:index' %}" method="post" role="form" class="contactForm">
         {% csrf_token %}
@@ -591,76 +575,6 @@
 
       </div>
     </section><!-- End Book A Table Section -->
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Testimonials</h2>
-          <p>What they're saying about us</p>
-        </div>
-
-        <div class="owl-carousel testimonials-carousel" data-aos="zoom-in" data-aos-delay="100">
-
-          <div class="testimonial-item">
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-            </p>
-            <img src=" {% static 'assets/img/testimonials/testimonials-1.jpg' %}" class="testimonial-img" alt="">
-            <h3>Saul Goodman</h3>
-            <h4>Ceo &amp; Founder</h4>
-          </div>
-
-          <div class="testimonial-item">
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-            </p>
-            <img src="{% static 'assets/img/testimonials/testimonials-2.jpg' %}" class="testimonial-img" alt="">
-            <h3>Sara Wilsson</h3>
-            <h4>Designer</h4>
-          </div>
-
-          <div class="testimonial-item">
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-            </p>
-            <img src="{% static 'assets/img/testimonials/testimonials-3.jpg' %}" class="testimonial-img" alt="">
-            <h3>Jena Karlis</h3>
-            <h4>Store Owner</h4>
-          </div>
-
-          <div class="testimonial-item">
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-            </p>
-            <img src="{% static 'assets/img/testimonials/testimonials-4.jpg' %}" class="testimonial-img" alt="">
-            <h3>Matt Brandon</h3>
-            <h4>Freelancer</h4>
-          </div>
-
-          <div class="testimonial-item">
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-            </p>
-            <img src="{% static 'assets/img/testimonials/testimonials-5.jpg' %}" class="testimonial-img" alt="">
-            <h3>John Larson</h3>
-            <h4>Entrepreneur</h4>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Testimonials Section -->
 
     <!-- ======= Gallery Section ======= -->
     <section id="gallery" class="gallery">
@@ -744,76 +658,6 @@
 
       </div>
     </section><!-- End Gallery Section -->
-
-    <!-- ======= Chefs Section ======= -->
-    <section id="chefs" class="chefs">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Chefs</h2>
-          <p>Our Proffesional Chefs</p>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-4 col-md-6">
-            <div class="member" data-aos="zoom-in" data-aos-delay="100">
-              <img src="{% static 'assets/img/chefs/chefs-1.jpg' %}" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>Walter White</h4>
-                  <span>Master Chef</span>
-                </div>
-                <div class="social">
-                  <a href=""><i class="icofont-twitter"></i></a>
-                  <a href=""><i class="icofont-facebook"></i></a>
-                  <a href=""><i class="icofont-instagram"></i></a>
-                  <a href=""><i class="icofont-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <div class="member" data-aos="zoom-in" data-aos-delay="200">
-              <img src="{% static 'assets/img/chefs/chefs-2.jpg' %}" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>Sarah Jhonson</h4>
-                  <span>Patissier</span>
-                </div>
-                <div class="social">
-                  <a href=""><i class="icofont-twitter"></i></a>
-                  <a href=""><i class="icofont-facebook"></i></a>
-                  <a href=""><i class="icofont-instagram"></i></a>
-                  <a href=""><i class="icofont-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <div class="member" data-aos="zoom-in" data-aos-delay="300">
-              <img src="{% static 'assets/img/chefs/chefs-3.jpg' %}" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>William Anderson</h4>
-                  <span>Cook</span>
-                </div>
-                <div class="social">
-                  <a href=""><i class="icofont-twitter"></i></a>
-                  <a href=""><i class="icofont-facebook"></i></a>
-                  <a href=""><i class="icofont-instagram"></i></a>
-                  <a href=""><i class="icofont-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Chefs Section -->
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
@@ -925,6 +769,45 @@
 
 
     </section><!-- End Contact Section -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
+            <div class="about-img">
+              {% if about_us %}
+                <img src="{{about_us.img_url.url}}" alt="" />
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+
+            {% if about_us %}
+            <h3>{{about_us.title}}</h3>
+
+            <p class="font-italic">
+              {{about_us.description}}
+            </p>
+            <ul>
+              <li><i class="icofont-check-circled"></i> Vision: {{about_us.vision}}</li>
+              <li><i class="icofont-check-circled"></i> Mission: {{about_us.mission}}</li>
+            </ul>
+            {% endif %}
+
+            <ul>
+              <li><i class="icofont-check-circled"></i>Core Values</li>
+            {% for core in coreObj %}
+                <li><i class="icofont-check"></i>{{core.name}} </li>
+            {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
 
   </main><!-- End #main -->
 
