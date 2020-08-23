@@ -92,7 +92,7 @@ def contact_message_form_view(request):
             'error': error,
             'form': form,
         }
-        return render(request, 'contact/index.html/', content)
+        return render(request, 'home/index.html/', content)
 
 
 def respond(request, mid):

@@ -20,7 +20,7 @@ class Booking(models.Model):
     has_responded = models.BooleanField(null=True,blank=True,default=False)
 
     def __str__(self):
-        return {self.your_name} + ' ' + {self.your_phone}
+        return '{} {}'.format(self.your_name,self.your_phone)
 
     class Meta:
         verbose_name_plural = 'Book a Table'

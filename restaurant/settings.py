@@ -48,6 +48,7 @@ else:
 # Application definition
 
 INSTALLED_APPS = [
+    'event',
     'booking',
     'contact',
     'util',

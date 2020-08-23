@@ -4,6 +4,7 @@ from menu.models import MenuItems
 from about.models import AboutUs, CoreValue, WhyUs
 from contact.models import Address, ContactMessage
 from booking.models import Booking
+from event.models import CustomerEvents,EventBackground
 
 
 # Create your views here.
@@ -16,6 +17,15 @@ def index(request):
     why_us = WhyUs.objects.filter(status=True)
     coreObj = CoreValue.objects.filter(status=True)
     addressObj = Address.objects.filter(status=True).first()
+    #Menu
+    # menuObj_Dinner=MenuItems.objects.filter(menus__contains='Dinner')
+    menuObj_Starters = MenuItems.objects.filter(menus__menu_category='Starters')
+    menuObj_Dinner = MenuItems.objects.filter(menus__menu_category='Dinner')
+    #Customer events
+    customer_event_obj = CustomerEvents.objects.all()
+    event_bg_obj=EventBackground.objects.all()
+
+
 
     contact_msg_exists = ContactMessage.objects.filter(has_message=True).first()
     if contact_msg_exists:
@@ -39,6 +49,10 @@ def index(request):
         'addressObj': addressObj,
         'contact_msg': contact_msg,
         'booking_msg': booking_msg,
+        'menuObj_Starters':menuObj_Starters,
+        'menuObj_Dinner':menuObj_Dinner,
+        'customer_event_obj':customer_event_obj,
+        'event_bg_obj':event_bg_obj,
 }
 
     return render(request, 'home/index.html', content)

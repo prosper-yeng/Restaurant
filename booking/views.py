@@ -7,6 +7,15 @@ from .models import Booking
 from .form import BookingForm, BookingMessageForm
 
 
+
+def success(request):
+    content = {
+        'message': 'Your email has been sent. If your email contain any enquiry, '
+                   'we will respond you as soon as possible through the email you provided'
+    }
+    return render(request, 'booking/success.html/',  content)
+
+
 def index(request):
 
     if request.method == 'POST':
@@ -34,16 +43,16 @@ def index(request):
 
 class ListView(PermissionRequiredMixin, generic.ListView):
     permission_required = 'contact.can.view.contact'
-    template_name = 'contact/list.html'
+    template_name = 'booking/list.html'
     context_object_name = 'result_list'
 
     def get_queryset(self):
-        return ContactMessage.objects.filter(has_responded=False)
+        return Booking.objects.filter(has_responded=False)
 
 
-class ContactMessageFormView(View):
+class BooingMessageFormView(View):
     form_class = BookingMessageForm
-    template_name = 'contact/message.html'
+    template_name = 'booking/message.html'
 
     def get(self, request):
         form = self.form_class(None)
@@ -60,9 +69,9 @@ class ContactMessageFormView(View):
         return render(request, self.template_name, {'form': form, 'success_msg': success_msg})
 
 
-def contact_message_form_view(request):
+def booking_message_form_view(request):
 
-    form = ContactMessageForm(request.POST or None)
+    form = BookingForm(request.POST or None)
 
     if form.is_valid():
         form.save()
@@ -74,30 +83,30 @@ def contact_message_form_view(request):
             'error': error,
             'form': form,
         }
-        return render(request, 'contact/index.html/', content)
+        return render(request, 'booking/index.html/', content)
 
 
 def respond(request, mid):
 
     if request.method == 'POST':
-        contact_message = ContactMessage.objects.get(id=mid)
-        contact_message.has_responded = True
-        contact_message.response = request.POST.get('response')
+        booking_message = Booking.objects.get(id=mid)
+        booking_message.has_responded = True
+        booking_message.response = request.POST.get('response')
 
         msg = request.POST.get('response')
-        recipient = [contact_message.email]
+        recipient = [booking_message.msgemail]
         if recipient:
             email_response(message=msg, recipients=recipient)
-            contact_message.save()
+            booking_message.save()
 
-        return redirect('contact:list')
+        return redirect('booking:list')
 
     else:
-        form = ContactResponseForm(None)
-        contact_message = ContactMessage.objects.get(id=mid)
+        form = BookingMessageForm(None)
+        booking_message = Booking.objects.get(id=mid)
         content = {
             'form': form,
             'mid': mid,
-            'contact_message': contact_message,
+            'booking_message': booking_message,
         }
-    return render(request, 'contact/response.html/',  content)
+    return render(request, 'booking/response.html/',  content)

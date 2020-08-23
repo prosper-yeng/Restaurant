@@ -14,13 +14,26 @@
                             Sender
                         </td>
                         <td>
+                            phone
+                        </td>
+                        <td>
                             Email
                         </td>
                          <td>
-                            Subject
+                            Book Date
                         </td>
+                         <td>
+                            Book Time
+                        </td>
+
                         <td>
                             Message
+                        </td>
+                        <td>
+                            Number of persons
+                        </td>
+                        <td>
+                            Status
                         </td>
                         <td></td>
                     </tr>
@@ -30,13 +43,23 @@
                                 {{ item }}
                             </td>
                             <td>
-                                {{ item.email }}
+                                {{ item.your_phone }}
                             </td>
                             <td>
-                                {{ item.subject }}
+                                {{ item.msgemail }}
                             </td>
                             <td>
-                                {{ item.message }}
+                                {{ item.book_date }}
+                            </td>
+                            <td>
+                                {{ item.book_time }}
+                            </td>
+
+                            <td>
+                                {{ item.msg }}
+                            </td>
+                            <td>
+                                {{ item.persons_number }}
                             </td>
                             <td>
                                 <a href="{% url 'contact:respond' item.id %}">Respond</a>

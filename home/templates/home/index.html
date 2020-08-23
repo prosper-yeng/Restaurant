@@ -176,7 +176,7 @@
       </div>
     </section><!-- End Why Us Section -->
 
-    <!-- ======= Menu Section ======= -->
+      <!-- ======= Menu Section ======= -->
     <section id="menu" class="menu section-bg">
       <div class="container" data-aos="fade-up">
 
@@ -192,21 +192,23 @@
               <li data-filter=".filter-starters">Starters</li>
               <li data-filter=".filter-salads">Salads</li>
               <li data-filter=".filter-specialty">Specialty</li>
+              <li data-filter=".filter-dinner">Dinner</li>
             </ul>
           </div>
         </div>
 
         <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
-            {% for obj in menuObj %}
+            {% for obj in menuObj_Starters %}
           <div class="col-lg-6 menu-item filter-starters">
-            <img src="{% static 'assets/img/menu/lobster-bisque.jpg' %}" class="menu-img" alt="">
+<!--            <img src="{% static 'assets/img/menu/lobster-bisque.jpg' %}" class="menu-img" alt="">-->
+                <img src="{{ obj.menuImage.url }}" class="menu-img" alt="">
             <div class="menu-content">
 <!--              <a href="#">Lobster Bisque</a><span>$5.95</span>-->
 
 
 
 
-                  <a href="#">{{obj.menu_name}}</a><span>$ {{obj.price}}</span>
+                  <a href="#">{{obj.menu_name}}</a><span>NKR {{obj.price}}</span>
 
 
 
@@ -219,11 +221,11 @@
 
 
           </div>
-         {% endfor %}
+            {% endfor %}
           <div class="col-lg-6 menu-item filter-specialty">
             <img src="{%static 'assets/img/menu/bread-barrel.jpg' %}" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Bread Barrel</a><span>$6.95</span>
+              <a href="#">Bread Barrel</a><span>NKR 6.95</span>
             </div>
             <div class="menu-ingredients">
               Lorem, deren, trataro, filede, nerada
@@ -233,7 +235,7 @@
           <div class="col-lg-6 menu-item filter-starters">
             <img src="{%static 'assets/img/menu/cake.jpg' %}" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Crab Cake</a><span>$7.95</span>
+              <a href="#">Crab Cake</a><span>NKR 7.95</span>
             </div>
             <div class="menu-ingredients">
               A delicate crab cake served on a toasted roll with lettuce and tartar sauce
@@ -243,7 +245,7 @@
           <div class="col-lg-6 menu-item filter-salads">
             <img src="{%static 'assets/img/menu/caesar.jpg' %}" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Caesar Selections</a><span>$8.95</span>
+              <a href="#">Caesar Selections</a><span>NKR 8.95</span>
             </div>
             <div class="menu-ingredients">
               Lorem, deren, trataro, filede, nerada
@@ -253,7 +255,7 @@
           <div class="col-lg-6 menu-item filter-specialty">
             <img src="{%static 'assets/img/menu/tuscan-grilled.jpg' %}" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Tuscan Grilled</a><span>$9.95</span>
+              <a href="#">Tuscan Grilled</a><span>NKR 9.95</span>
             </div>
             <div class="menu-ingredients">
               Grilled chicken with provolone, artichoke hearts, and roasted red pesto
@@ -263,7 +265,7 @@
           <div class="col-lg-6 menu-item filter-starters">
             <img src="{%static 'assets/img/menu/mozzarella.jpg' %}" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Mozzarella Stick</a><span>$4.95</span>
+              <a href="#">Mozzarella Stick</a><span>NKR 4.95</span>
             </div>
             <div class="menu-ingredients">
               Lorem, deren, trataro, filede, nerada
@@ -273,7 +275,7 @@
           <div class="col-lg-6 menu-item filter-salads">
             <img src="{%static 'assets/img/menu/greek-salad.jpg' %}" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Greek Salad</a><span>$9.95</span>
+              <a href="#">Greek Salad</a><span>NKR 9.95</span>
             </div>
             <div class="menu-ingredients">
               Fresh spinach, crisp romaine, tomatoes, and Greek olives
@@ -283,7 +285,7 @@
           <div class="col-lg-6 menu-item filter-salads">
             <img src="{% static 'assets/img/menu/spinach-salad.jpg' %}" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Spinach Salad</a><span>$9.95</span>
+              <a href="#">Spinach Salad</a><span>NKR 9.95</span>
             </div>
             <div class="menu-ingredients">
               Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
@@ -293,17 +295,31 @@
           <div class="col-lg-6 menu-item filter-specialty">
             <img src="{% static 'assets/img/menu/lobster-roll.jpg' %}" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Lobster Roll</a><span>$12.95</span>
+              <a href="#">Lobster Roll</a><span>NKR 12.95</span>
             </div>
             <div class="menu-ingredients">
               Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
             </div>
           </div>
 
+            {% for mydinner in menuObj_Dinner %}
+           <div class="col-lg-6 menu-item filter-dinner">
+
+<!--            <img src="{% static 'assets/img/menu/lobster-roll.jpg' %}" class="menu-img" alt="">-->
+             <img src="{{mydinner.menuImage.url}}" class="menu-img" alt="">
+            <div class="menu-content">
+              <a href="#">{{ mydinner.menu_name }}</a><span>NKR {{ mydinner.price }}</span>
+            </div>
+            <div class="menu-ingredients">
+              {{mydinner.menu_desc}}
+            </div>
+          </div>
+          {% endfor %}
         </div>
 
       </div>
     </section><!-- End Menu Section -->
+
 
     <!-- ======= Specials Section ======= -->
     <section id="specials" class="specials">
@@ -405,7 +421,9 @@
     </section><!-- End Specials Section -->
 
     <!-- ======= Events Section ======= -->
-    <section id="events" class="events">
+
+    <section id="events" class="events"
+             {% for ebg in event_bg_obj %} style='background-image: url("{{ebg.event_bg.url}}");' {% endfor %} >
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
@@ -414,81 +432,89 @@
         </div>
 
         <div class="owl-carousel events-carousel" data-aos="fade-up" data-aos-delay="100">
+          {% for myevent in customer_event_obj %}
 
           <div class="row event-item">
+
             <div class="col-lg-6">
-              <img src="{%static 'assets/img/event-birthday.jpg' %}" class="img-fluid" alt="">
+              <img src="{{ myevent.event_img.url }}" class="img-fluid" alt="">
             </div>
             <div class="col-lg-6 pt-4 pt-lg-0 content">
-              <h3>Birthday Parties</h3>
+              <h3>{{ myevent.event_type }}</h3>
               <div class="price">
-                <p><span>$189</span></p>
+                <p><span>NKR {{ myevent.price }}</span></p>
               </div>
               <p class="font-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
+                {{ myevent.event_desc }}
               </p>
               <ul>
-                <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+
+                {% for mypackage in myevent.package.all %}
+
+
+                <li><i class="icofont-check-circled"></i> {{ mypackage.name }}.</li>
+<!--              <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>-->
+<!--                <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>-->
+                {% endfor %}
               </ul>
               <p>
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur
+                {{ myevent.tagline }}
               </p>
             </div>
+
           </div>
 
-          <div class="row event-item">
-            <div class="col-lg-6">
-              <img src="{%static 'assets/img/event-private.jpg' %}" class="img-fluid" alt="">
-            </div>
-            <div class="col-lg-6 pt-4 pt-lg-0 content">
-              <h3>Private Parties</h3>
-              <div class="price">
-                <p><span>$290</span></p>
-              </div>
-              <p class="font-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
-              </p>
-              <ul>
-                <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              </ul>
-              <p>
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur
-              </p>
-            </div>
-          </div>
+<!--          <div class="row event-item">-->
+<!--            <div class="col-lg-6">-->
+<!--              <img src="{%static 'assets/img/event-private.jpg' %}" class="img-fluid" alt="">-->
+<!--            </div>-->
+<!--            <div class="col-lg-6 pt-4 pt-lg-0 content">-->
+<!--              <h3>Private Parties</h3>-->
+<!--              <div class="price">-->
+<!--                <p><span>NKR 290</span></p>-->
+<!--              </div>-->
+<!--              <p class="font-italic">-->
+<!--                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore-->
+<!--                magna aliqua.-->
+<!--              </p>-->
+<!--              <ul>-->
+<!--                <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>-->
+<!--                <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>-->
+<!--                <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>-->
+<!--              </ul>-->
+<!--              <p>-->
+<!--                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate-->
+<!--                velit esse cillum dolore eu fugiat nulla pariatur-->
+<!--              </p>-->
+<!--            </div>-->
+<!--          </div>-->
 
-          <div class="row event-item">
-            <div class="col-lg-6">
-              <img src="{%static 'assets/img/event-custom.jpg' %}" class="img-fluid" alt="">
-            </div>
-            <div class="col-lg-6 pt-4 pt-lg-0 content">
-              <h3>Custom Parties</h3>
-              <div class="price">
-                <p><span>$99</span></p>
-              </div>
-              <p class="font-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
-              </p>
-              <ul>
-                <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              </ul>
-              <p>
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur
-              </p>
-            </div>
-          </div>
+<!--          <div class="row event-item">-->
+<!--            <div class="col-lg-6">-->
+<!--              <img src="{%static 'assets/img/event-custom.jpg' %}" class="img-fluid" alt="">-->
+<!--            </div>-->
+<!--            <div class="col-lg-6 pt-4 pt-lg-0 content">-->
+<!--              <h3>Custom Parties</h3>-->
+<!--              <div class="price">-->
+<!--                <p><span>NKR 99</span></p>-->
+<!--              </div>-->
+<!--              <p class="font-italic">-->
+<!--                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore-->
+<!--                magna aliqua.-->
+<!--              </p>-->
+<!--              <ul>-->
+<!--                <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>-->
+<!--                <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>-->
+<!--                <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>-->
+<!--              </ul>-->
+<!--              <p>-->
+<!--                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate-->
+<!--                velit esse cillum dolore eu fugiat nulla pariatur-->
+<!--              </p>-->
+<!--            </div>-->
+<!--          </div>-->
+
+          {% endfor %}
 
         </div>
 
