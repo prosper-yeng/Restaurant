@@ -118,4 +118,4 @@ def respond(request, mid):
             'mid': mid,
             'contact_message': contact_message,
         }
-    return render(request, 'contact/response.html/',  content)
+    return render(request, 'contact/response.html',  content)

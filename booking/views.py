@@ -112,5 +112,5 @@ def respond(request, mid):
             'mid': mid,
             'booking_message': booking_message,
         }
-    return render(request, 'booking/response.html/',  content)
+    return render(request, 'booking/response.html',  content)
 
