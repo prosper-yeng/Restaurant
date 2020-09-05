@@ -953,7 +953,37 @@ section {
   margin-right: 0;
 }
 
-.menu .menu-item {
+.menu #drink-menu-flters {
+  padding: 0;
+  margin: 0 auto 0 auto;
+  list-style: none;
+  text-align: center;
+  border-radius: 50px;
+}
+
+.menu #drink-menu-flters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 12px 10px 12px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  color: #fff;
+  margin-bottom: 10px;
+  transition: all ease-in-out 0.3s;
+  border-radius: 50px;
+  font-family: "Playfair Display", serif;
+}
+
+.drink-menu #drink-menu-flters li:hover, .menu #drink-menu-flters li.filter-active {
+  color: #cda45e;
+}
+
+.drink-menu #drink-menu-flters li:last-child {
+  margin-right: 0;
+}
+
+.drink-menu .menu-item {
   margin-top: 50px;
 }
 

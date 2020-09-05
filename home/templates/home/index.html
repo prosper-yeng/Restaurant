@@ -157,6 +157,9 @@
 
       <!-- ======= Menu Section ======= -->
     <section id="menu" class="menu section-bg">
+
+
+
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
@@ -172,35 +175,69 @@
               <li data-filter=".filter-salads">Salads</li>
               <li data-filter=".filter-specialty">Specialty</li>
               <li data-filter=".filter-dinner">Dinner</li>
+              <li data-filter=".filter-drink">Drink</li>
+               <li data-filter=".filter-lunsj">Lunsj</li>
             </ul>
           </div>
         </div>
 
         <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
-            {% for obj in menuObj_Starters %}
-          <div class="col-lg-6 menu-item filter-starters">
+
+          {% for obj_lunsj in menuObj_Lunsj %}
+          <div class="col-lg-6 menu-item filter-lunsj">
 <!--            <img src="{% static 'assets/img/menu/lobster-bisque.jpg' %}" class="menu-img" alt="">-->
-                <img src="{{ obj.menuImage.url }}" class="menu-img" alt="">
+                <img src="{{ obj_lunsj.menuImage.url }}" class="menu-img" alt="">
             <div class="menu-content">
 <!--              <a href="#">Lobster Bisque</a><span>$5.95</span>-->
 
-
-
-
-                  <a href="#">{{obj.menu_name}}</a><span>NKR {{obj.price}}</span>
-
-
-
+                  <a href="#">{{obj_lunsj.menu_name}}</a><span>NKR {{obj_lunsj.price}}</span>
 
             </div>
             <div class="menu-ingredients">
-              {{obj.menu_desc}}
+              {{obj_lunsj.menu_desc}}
             </div>
-
-
 
           </div>
             {% endfor %}
+
+
+           {% for obj_drink in menuObj_drinks %}
+          <div class="col-lg-6 menu-item filter-drink">
+<!--            <img src="{% static 'assets/img/menu/lobster-bisque.jpg' %}" class="menu-img" alt="">-->
+                <img src="{{ obj_drink.menuImage.url }}" class="menu-img" alt="">
+            <div class="menu-content">
+<!--              <a href="#">Lobster Bisque</a><span>$5.95</span>-->
+
+                  <a href="#">{{obj_drink.menu_name}}</a><span>NKR {{obj_drink.price}}</span>
+
+            </div>
+            <div class="menu-ingredients">
+              {{obj_drink.menu_desc}}
+            </div>
+
+          </div>
+            {% endfor %}
+
+
+
+           {% for obj_dinner in menuObj_Dinner %}
+          <div class="col-lg-6 menu-item filter-dinner">
+<!--            <img src="{% static 'assets/img/menu/lobster-bisque.jpg' %}" class="menu-img" alt="">-->
+                <img src="{{ obj_dinner.menuImage.url }}" class="menu-img" alt="">
+            <div class="menu-content">
+<!--              <a href="#">Lobster Bisque</a><span>$5.95</span>-->
+
+                  <a href="#">{{obj_dinner.menu_name}}</a><span>NKR {{obj_dinner.price}}</span>
+
+            </div>
+            <div class="menu-ingredients">
+              {{obj_dinner.menu_desc}}
+            </div>
+
+          </div>
+            {% endfor %}
+
+
           <div class="col-lg-6 menu-item filter-specialty">
             <img src="{%static 'assets/img/menu/bread-barrel.jpg' %}" class="menu-img" alt="">
             <div class="menu-content">
@@ -252,7 +289,7 @@
           </div>
 
           <div class="col-lg-6 menu-item filter-salads">
-            <img src="{%static 'assets/img/menu/greek-salad.jpg' %}" class="menu-img" alt="">
+            <img src="{% static 'assets/img/menu/greek-salad.jpg' %}" class="menu-img" alt="">
             <div class="menu-content">
               <a href="#">Greek Salad</a><span>NKR 9.95</span>
             </div>
@@ -280,27 +317,326 @@
               Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
             </div>
           </div>
+              {{menuObj_Middag.menu_desc}}
 
-            {% for mydinner in menuObj_Dinner %}
-           <div class="col-lg-6 menu-item filter-dinner">
+            {% for obj_middag in menuObj_Middag %}
+           <div class="col-lg-6 menu-item filter-middag">
 
 <!--            <img src="{% static 'assets/img/menu/lobster-roll.jpg' %}" class="menu-img" alt="">-->
-             <img src="{{mydinner.menuImage.url}}" class="menu-img" alt="">
+             <img src="{{ obj_middag.menuImage.url }}" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">{{ mydinner.menu_name }}</a><span>NKR {{ mydinner.price }}</span>
+              <a href="#">{{ obj_middag.menu_name }}</a><span>NKR {{ obj_middag.price }}</span>
             </div>
             <div class="menu-ingredients">
-              {{mydinner.menu_desc}}
+              {{obj_middag.menu_desc}}
             </div>
           </div>
           {% endfor %}
+
+
+
+
+
+
         </div>
 
       </div>
+
     </section><!-- End Menu Section -->
 
 
+
+     <!-- =======DRINK Menu Section ======= -->
+    <section id="drink-menu" class="menu section-bg">
+
+
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Menu</h2>
+          <p>Check Our Tasty Drink Menu</p>
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="drink-menu-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-mineralvann">Mineralvann</li>
+              <li data-filter=".filter-salads">Salads</li>
+              <li data-filter=".filter-specialty">Specialty</li>
+              <li data-filter=".filter-dinner">Dinner</li>
+              <li data-filter=".filter-drink">Drink</li>
+               <li data-filter=".filter-lunsj">Lunsj</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
+
+          {% for obj_drin in menuObj_drinks %}
+          <div class="col-lg-6 menu-item filter-mineralvann">
+<!--            <img src="{% static 'assets/img/menu/lobster-bisque.jpg' %}" class="menu-img" alt="">-->
+                <img src="{{ obj_drin.menuImage.url }}" class="menu-img" alt="">
+            <div class="menu-content">
+<!--              <a href="#">Lobster Bisque</a><span>$5.95</span>-->
+
+                  <a href="#">{{obj_drin.menu_name}}</a><span>NKR {{obj_drin.price}}</span>
+
+            </div>
+            <div class="menu-ingredients">
+              {{obj_drin.menu_desc}}
+            </div>
+
+          </div>
+            {% endfor %}
+
+
+           {% for obj_drink in menuObj_drinks %}
+          <div class="col-lg-6 menu-item filter-drink">
+<!--            <img src="{% static 'assets/img/menu/lobster-bisque.jpg' %}" class="menu-img" alt="">-->
+                <img src="{{ obj_drink.menuImage.url }}" class="menu-img" alt="">
+            <div class="menu-content">
+<!--              <a href="#">Lobster Bisque</a><span>$5.95</span>-->
+
+                  <a href="#">{{obj_drink.menu_name}}</a><span>NKR {{obj_drink.price}}</span>
+
+            </div>
+            <div class="menu-ingredients">
+              {{obj_drink.menu_desc}}
+            </div>
+
+          </div>
+            {% endfor %}
+
+           {% for obj_dinner in menuObj_Dinner %}
+          <div class="col-lg-6 menu-item filter-dinner">
+<!--            <img src="{% static 'assets/img/menu/lobster-bisque.jpg' %}" class="menu-img" alt="">-->
+                <img src="{{ obj_dinner.menuImage.url }}" class="menu-img" alt="">
+            <div class="menu-content">
+<!--              <a href="#">Lobster Bisque</a><span>$5.95</span>-->
+
+                  <a href="#">{{obj_dinner.menu_name}}</a><span>NKR {{obj_dinner.price}}</span>
+
+            </div>
+            <div class="menu-ingredients">
+              {{obj_dinner.menu_desc}}
+            </div>
+
+          </div>
+            {% endfor %}
+
+
+          <div class="col-lg-6 menu-item filter-specialty">
+            <img src="{%static 'assets/img/menu/bread-barrel.jpg' %}" class="menu-img" alt="">
+            <div class="menu-content">
+              <a href="#">Bread Barrel</a><span>NKR 6.95</span>
+            </div>
+            <div class="menu-ingredients">
+              Lorem, deren, trataro, filede, nerada
+            </div>
+          </div>
+
+          <div class="col-lg-6 menu-item filter-starters">
+            <img src="{%static 'assets/img/menu/cake.jpg' %}" class="menu-img" alt="">
+            <div class="menu-content">
+              <a href="#">Crab Cake</a><span>NKR 7.95</span>
+            </div>
+            <div class="menu-ingredients">
+              A delicate crab cake served on a toasted roll with lettuce and tartar sauce
+            </div>
+          </div>
+
+          <div class="col-lg-6 menu-item filter-salads">
+            <img src="{%static 'assets/img/menu/caesar.jpg' %}" class="menu-img" alt="">
+            <div class="menu-content">
+              <a href="#">Caesar Selections</a><span>NKR 8.95</span>
+            </div>
+            <div class="menu-ingredients">
+              Lorem, deren, trataro, filede, nerada
+            </div>
+          </div>
+
+          <div class="col-lg-6 menu-item filter-specialty">
+            <img src="{%static 'assets/img/menu/tuscan-grilled.jpg' %}" class="menu-img" alt="">
+            <div class="menu-content">
+              <a href="#">Tuscan Grilled</a><span>NKR 9.95</span>
+            </div>
+            <div class="menu-ingredients">
+              Grilled chicken with provolone, artichoke hearts, and roasted red pesto
+            </div>
+          </div>
+
+          <div class="col-lg-6 menu-item filter-starters">
+            <img src="{%static 'assets/img/menu/mozzarella.jpg' %}" class="menu-img" alt="">
+            <div class="menu-content">
+              <a href="#">Mozzarella Stick</a><span>NKR 4.95</span>
+            </div>
+            <div class="menu-ingredients">
+              Lorem, deren, trataro, filede, nerada
+            </div>
+          </div>
+
+          <div class="col-lg-6 menu-item filter-salads">
+            <img src="{% static 'assets/img/menu/greek-salad.jpg' %}" class="menu-img" alt="">
+            <div class="menu-content">
+              <a href="#">Greek Salad</a><span>NKR 9.95</span>
+            </div>
+            <div class="menu-ingredients">
+              Fresh spinach, crisp romaine, tomatoes, and Greek olives
+            </div>
+          </div>
+
+          <div class="col-lg-6 menu-item filter-salads">
+            <img src="{% static 'assets/img/menu/spinach-salad.jpg' %}" class="menu-img" alt="">
+            <div class="menu-content">
+              <a href="#">Spinach Salad</a><span>NKR 9.95</span>
+            </div>
+            <div class="menu-ingredients">
+              Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
+            </div>
+          </div>
+
+          <div class="col-lg-6 menu-item filter-specialty">
+            <img src="{% static 'assets/img/menu/lobster-roll.jpg' %}" class="menu-img" alt="">
+            <div class="menu-content">
+              <a href="#">Lobster Roll</a><span>NKR 12.95</span>
+            </div>
+            <div class="menu-ingredients">
+              Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
+            </div>
+          </div>
+              {{menuObj_Middag.menu_desc}}
+
+            {% for obj_middag in menuObj_Middag %}
+           <div class="col-lg-6 menu-item filter-middag">
+
+<!--            <img src="{% static 'assets/img/menu/lobster-roll.jpg' %}" class="menu-img" alt="">-->
+             <img src="{{ obj_middag.menuImage.url }}" class="menu-img" alt="">
+            <div class="menu-content">
+              <a href="#">{{ obj_middag.menu_name }}</a><span>NKR {{ obj_middag.price }}</span>
+            </div>
+            <div class="menu-ingredients">
+              {{obj_middag.menu_desc}}
+            </div>
+          </div>
+          {% endfor %}
+
+
+
+
+
+
+        </div>
+
+      </div>
+
+    </section><!-- End DRINK Menu Section -->
+
+
     <!-- ======= Specials Section ======= -->
+<!--    <section id="specials" class="specials">-->
+<!--      <div class="container" data-aos="fade-up">-->
+
+<!--        <div class="section-title">-->
+<!--          <h2>Specials</h2>-->
+<!--          <p>Check Our Specials</p>-->
+<!--          <a name="Specials"></a>-->
+<!--        </div>-->
+
+<!--        <div class="row" data-aos="fade-up" data-aos-delay="100">-->
+<!--          <div class="col-lg-3">-->
+<!--            <ul class="nav nav-tabs flex-column">-->
+<!--              <li class="nav-item">-->
+<!--                <a class="nav-link active show" data-toggle="tab" href="#tab-1">Sri Lankan Fish</a>-->
+<!--              </li>-->
+<!--              <li class="nav-item">-->
+<!--                <a class="nav-link" data-toggle="tab" href="#tab-2">Norwegian Potate</a>-->
+<!--              </li>-->
+<!--              <li class="nav-item">-->
+<!--                <a class="nav-link" data-toggle="tab" href="#tab-3">Indian Cussen</a>-->
+<!--              </li>-->
+<!--              <li class="nav-item">-->
+<!--                <a class="nav-link" data-toggle="tab" href="#tab-4">Amarican Fries</a>-->
+<!--              </li>-->
+<!--              <li class="nav-item">-->
+<!--                <a class="nav-link" data-toggle="tab" href="#tab-5">Italian Pizza</a>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--          <div class="col-lg-9 mt-4 mt-lg-0">-->
+<!--            <div class="tab-content">-->
+<!--              <div class="tab-pane active show" id="tab-1">-->
+<!--                <div class="row">-->
+<!--                  <div class="col-lg-8 details order-2 order-lg-1">-->
+<!--                    <h3>The best fish meal ever</h3>-->
+<!--                    <p class="font-italic">This meal is so tasty that you cannot resist</p>-->
+<!--                    <p>This is prepared with shrimps, roasted fish and manay more. It is eaten with hot paper and served with chiled spakled water. The food is so tasty and delicious</p>-->
+<!--                  </div>-->
+<!--                  <div class="col-lg-4 text-center order-1 order-lg-2">-->
+<!--                    <img src="{% static 'assets/img/specials-1.png' %}" alt="" class="img-fluid">-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="tab-pane" id="tab-2">-->
+<!--                <div class="row">-->
+<!--                  <div class="col-lg-8 details order-2 order-lg-1">-->
+<!--                    <h3>Best meal you can not resist</h3>-->
+<!--                    <p class="font-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>-->
+<!--                    <p>This is prepared with shrimps, roasted fish and manay more. It is eaten with hot paper and served with chiled spakled water. The food is so tasty and delicious</p>-->
+<!--                  </div>-->
+<!--                  <div class="col-lg-4 text-center order-1 order-lg-2">-->
+<!--                    <img src="{% static 'assets/img/specials-2.png' %}" alt="" class="img-fluid">-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="tab-pane" id="tab-3">-->
+<!--                <div class="row">-->
+<!--                  <div class="col-lg-8 details order-2 order-lg-1">-->
+<!--                    <h3>Best meal you can not resist</h3>-->
+<!--                    <p class="font-italic">Try this with family and friends </p>-->
+<!--                    <p>This is prepared with shrimps, roasted fish and manay more. It is eaten with hot paper and served with chiled spakled water. The food is so tasty and delicious</p>-->
+<!--                  </div>-->
+<!--                  <div class="col-lg-4 text-center order-1 order-lg-2">-->
+<!--                    <img src="{% static 'assets/img/specials-3.png' %}" alt="" class="img-fluid">-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="tab-pane" id="tab-4">-->
+<!--                <div class="row">-->
+<!--                  <div class="col-lg-8 details order-2 order-lg-1">-->
+<!--                    <h3>Best meal you can not resist</h3>-->
+<!--                    <p class="font-italic">Try this with family and friends. And you will like it</p>-->
+<!--                    <p>This is prepared with shrimps, roasted fish and many more. It is eaten with hot paper and served with chiled spakled water. The food is so tasty and delicious</p>-->
+<!--                  </div>-->
+<!--                  <div class="col-lg-4 text-center order-1 order-lg-2">-->
+<!--                    <img src="{% static 'assets/img/specials-4.png' %}" alt="" class="img-fluid">-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="tab-pane" id="tab-5">-->
+<!--                <div class="row">-->
+<!--                  <div class="col-lg-8 details order-2 order-lg-1">-->
+<!--                    <h3>Best meal you can not resist</h3>-->
+<!--                    <p class="font-italic">Try this with family and friends. And you will like it</p>-->
+<!--                    <p>This is prepared with shrimps, roasted fish and many more. It is eaten with hot paper and served with chiled spakled water. The food is so tasty and delicious</p>-->
+<!--                  </div>-->
+<!--                  <div class="col-lg-4 text-center order-1 order-lg-2">-->
+<!--                    <img src="{% static 'assets/img/specials-5.png' %}" alt="" class="img-fluid">-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+<!--    </section>&lt;!&ndash; End Specials Section &ndash;&gt;-->
+
+
+
+
+        <!-- ======= Specials Section ======= -->
     <section id="specials" class="specials">
       <div class="container" data-aos="fade-up">
 
@@ -313,89 +649,54 @@
         <div class="row" data-aos="fade-up" data-aos-delay="100">
           <div class="col-lg-3">
             <ul class="nav nav-tabs flex-column">
-              <li class="nav-item">
-                <a class="nav-link active show" data-toggle="tab" href="#tab-1">Sri Lankan Fish</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab-2">Norwegian Potate</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab-3">Indian Cussen</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab-4">Amarican Fries</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab-5">Italian Pizza</a>
-              </li>
+              {% for spec in specialObj %}
+                {% if spec.id == specialObj.first.id %}
+                    <li class="nav-item">
+                      <a class="nav-link active show" data-toggle="tab" href="#tab-{{spec.id}}">{{spec.name}}</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tab-{{spec.id}}">{{spec.name}}</a>
+                     </li>
+                {% endif %}
+              {% endfor %}
             </ul>
           </div>
+
           <div class="col-lg-9 mt-4 mt-lg-0">
             <div class="tab-content">
-              <div class="tab-pane active show" id="tab-1">
-                <div class="row">
-                  <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>The best fish meal ever</h3>
-                    <p class="font-italic">This meal is so tasty that you cannot resist</p>
-                    <p>This is prepared with shrimps, roasted fish and manay more. It is eaten with hot paper and served with chiled spakled water. The food is so tasty and delicious</p>
+              {% for spec in specialObj %}
+                {% if spec.id == specialObj.first.id %}
+                  <div class="tab-pane active show" id="tab-{{spec.id}}}">
+                    <div class="row">
+                      <div class="col-lg-8 details order-2 order-lg-1">
+                        <h3>{{spec.title}}</h3>
+                        <p class="font-italic">{{spec.description}}</p>
+                        <p>{{spec.other_info}}</p>
+                      </div>
+                      <div class="col-lg-4 text-center order-1 order-lg-2">
+                        <img src="{{spec.img_url.url}}" alt="" class="img-fluid">
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="{% static 'assets/img/specials-1.png' %}" alt="" class="img-fluid">
+                {% else %}
+                  <div class="tab-pane" id="tab-{{spec.id}}">
+                    <div class="row">
+                      <div class="col-lg-8 details order-2 order-lg-1">
+                        <h3>{{spec.title}}</h3>
+                        <p class="font-italic">{{spec.description}}</p>
+                        <p>{{spec.other_info}}</p>
+                      </div>
+                      <div class="col-lg-4 text-center order-1 order-lg-2">
+                        <img src="{{spec.img_url.url}}" alt="" class="img-fluid">
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div class="tab-pane" id="tab-2">
-                <div class="row">
-                  <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>Best meal you can not resist</h3>
-                    <p class="font-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                    <p>This is prepared with shrimps, roasted fish and manay more. It is eaten with hot paper and served with chiled spakled water. The food is so tasty and delicious</p>
-                  </div>
-                  <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="{% static 'assets/img/specials-2.png' %}" alt="" class="img-fluid">
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" id="tab-3">
-                <div class="row">
-                  <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>Best meal you can not resist</h3>
-                    <p class="font-italic">Try this with family and friends </p>
-                    <p>This is prepared with shrimps, roasted fish and manay more. It is eaten with hot paper and served with chiled spakled water. The food is so tasty and delicious</p>
-                  </div>
-                  <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="{% static 'assets/img/specials-3.png' %}" alt="" class="img-fluid">
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" id="tab-4">
-                <div class="row">
-                  <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>Best meal you can not resist</h3>
-                    <p class="font-italic">Try this with family and friends. And you will like it</p>
-                    <p>This is prepared with shrimps, roasted fish and many more. It is eaten with hot paper and served with chiled spakled water. The food is so tasty and delicious</p>
-                  </div>
-                  <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="{% static 'assets/img/specials-4.png' %}" alt="" class="img-fluid">
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" id="tab-5">
-                <div class="row">
-                  <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>Best meal you can not resist</h3>
-                    <p class="font-italic">Try this with family and friends. And you will like it</p>
-                    <p>This is prepared with shrimps, roasted fish and many more. It is eaten with hot paper and served with chiled spakled water. The food is so tasty and delicious</p>
-                  </div>
-                  <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="{% static 'assets/img/specials-5.png' %}" alt="" class="img-fluid">
-                  </div>
-                </div>
-              </div>
+                {% endif %}
+              {% endfor%}
             </div>
           </div>
         </div>
-
       </div>
     </section><!-- End Specials Section -->
 
@@ -500,6 +801,56 @@
       </div>
     </section><!-- End Events Section -->
 
+
+
+      <!-- ======= Events Organized by restaurant ======= -->
+
+    <section id="about" class="about">
+
+      <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+
+          <p align="center">Events Coming up at 37 Eatery</p>
+        </div>
+        {% for res_event in restaurant_event_obj %}
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
+            <div class="about-img">
+
+                <img src="{{res_event.event_img.url}}" alt="" />
+
+            </div>
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+
+
+            <h3>{{res_event.event_type}}</h3>
+
+            <p class="font-italic">
+              {{res_event.event_desc}}
+            </p>
+            <ul>
+              <li><i class="icofont-check-circled"></i> Date: {{res_event.event_date}}</li>
+
+            </ul>
+
+
+            <ul>
+              <li><i class="icofont-check-circled"></i>Further details</li>
+                  {% for res_pack in res_event.package.all %}
+                <li><i class="icofont-check"></i> {{ res_pack.name }}</li>
+                {% endfor %}
+
+            </ul>
+          </div>
+        </div>
+          {% endfor %}
+      </div>
+    </section><!-- End Restaurant Events -->
+
+
+
           <a name="booking"></a>
     <!-- ======= Book A Table Section ======= -->
     <section id="book-a-table" class="book-a-table">
@@ -589,71 +940,15 @@
       <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row no-gutters">
-
+            {% for mygal in gallery_obj %}
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="{% static 'assets/img/gallery/gallery-1.jpg' %}" class="venobox" data-gall="gallery-item">
-                <img src="{% static 'assets/img/gallery/gallery-1.jpg' %}" alt="" class="img-fluid">
+              <a href="{{mygal.img_url.url}}" class="venobox" data-gall="gallery-item">
+                <img src="{{mygal.img_url.url}}" alt="" class="img-fluid">
               </a>
             </div>
           </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="{% static 'assets/img/gallery/gallery-2.jpg' %}" class="venobox" data-gall="gallery-item">
-                <img src="{% static 'assets/img/gallery/gallery-2.jpg' %}" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="{% static 'assets/img/gallery/gallery-3.jpg' %}" class="venobox" data-gall="gallery-item">
-                <img src="{% static 'assets/img/gallery/gallery-3.jpg' %}" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="{% static 'assets/img/gallery/gallery-4.jpg' %}" class="venobox" data-gall="gallery-item">
-                <img src="{% static 'assets/img/gallery/gallery-4.jpg' %}" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="{% static 'assets/img/gallery/gallery-5.jpg' %}" class="venobox" data-gall="gallery-item">
-                <img src="{% static 'assets/img/gallery/gallery-5.jpg' %}" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="{% static 'assets/img/gallery/gallery-6.jpg' %}" class="venobox" data-gall="gallery-item">
-                <img src="{% static 'assets/img/gallery/gallery-6.jpg' %}" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="{% static 'assets/img/gallery/gallery-7.jpg' %}" class="venobox" data-gall="gallery-item">
-                <img src="{% static 'assets/img/gallery/gallery-7.jpg' %}" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="{% static 'assets/img/gallery/gallery-8.jpg' %}" class="venobox" data-gall="gallery-item">
-                <img src="{% static 'assets/img/gallery/gallery-8.jpg' %}" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
+            {% endfor %}
         </div>
 
       </div>

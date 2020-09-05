@@ -172,7 +172,23 @@
       });
       aos_init();
     });
+
+
+    //Drinks men
+     $('#drink-menu-flters li').on('click', function() {
+      $("#drink-menu-flters li").removeClass('filter-active');
+      $(this).addClass('filter-active');
+
+      menuIsotope.isotope({
+        filter: $(this).data('filter')
+      });
+      aos_init();
+    });
   });
+
+  });
+
+
 
   // Events carousel (uses the Owl Carousel library)
   $(".events-carousel").owlCarousel({
