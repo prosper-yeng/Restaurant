@@ -5,41 +5,46 @@
     <div>
     <div class="offset-2 col-md-8">
         <a href="{% url 'home:index' %}#book_table">Book Table</a>
-        <h2>Contact Messages Received</h2>
+        <h2>Contact Messages Received
+        ({{ result_list.count }})</h2>
              <div class="container bg-light">
 
                 <table class="table table-striped table-bordered">
                     <tr>
-                        <td>
+                        <th>
                             Sender
-                        </td>
-                        <td>
-                            Email
-                        </td>
-                         <td>
+                        </th>
+                         <th>
                             Subject
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             Message
-                        </td>
-                        <td></td>
+                        </th>
+                        <th></th>
+                        <th></th>
                     </tr>
                     {% for item in result_list %}
                         <tr>
                             <td>
                                 {{ item }}
-                            </td>
-                            <td>
-                                {{ item.email }}
+                                <br>
+                                <span class="icofont-email">
+                                    {{ item.email }}
+                                </span>
                             </td>
                             <td>
                                 {{ item.subject }}
                             </td>
                             <td>
-                                {{ item.message }}
+                                <b>Message:</b>{{ item.message }}
+                                <br>
+                                <b>Response:</b>{{ item.response|linebreaks }}
                             </td>
                             <td>
                                 <a href="{% url 'contact:respond' item.id %}">Respond</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'contact:close_message' item.id %}">Close</a>
                             </td>
                         </tr>
                 {% endfor %}

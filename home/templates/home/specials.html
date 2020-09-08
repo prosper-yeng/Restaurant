@@ -1,0 +1,77 @@
+<section id="specials" class="specials">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Specials</h2>
+          <p>Check Our Specials</p>
+          <a name="Specials"></a>
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+
+          <div class="col-lg-3">
+            <ul class="nav nav-tabs flex-column">
+              {% for spec in specialObj %}
+                {% if forloop.counter0 == 0 %}
+                  <li class="nav-item active">
+                    <a class="nav-link" data-toggle="tab" href="#tab{{spec.id}}">{{spec.name}}</a>
+                  </li>
+                {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tab{{spec.id}}">{{spec.name}}</a>
+                  </li>
+                {% endif%}
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="col-lg-9">
+            <div class="tab-content">
+              {% for spec in specialObj %}
+                {% if forloop.counter0 == 0 %}
+                  <div class="tab-pane active" id="tab{{spec.id}}">
+                    <div class="row">
+                      <div class="col-lg-8 details order-2 order-lg-1">
+                        <h3>{{spec.title}}</h3>
+                        <p class="font-italic">{{spec.description}}</p>
+                        <p>{{spec.other_info}}</p>
+                      </div>
+                      <div class="col-lg-4 text-center order-1 order-lg-2">
+                        <img src="{{spec.img_url.url}}" alt="" class="img-fluid">
+                      </div>
+                    </div>
+                  </div>
+                {% else %}
+                  <div class="tab-pane" id="tab{{spec.id}}">
+                    <div class="row">
+                      <div class="col-lg-8 details order-2 order-lg-1">
+                        <h3>{{spec.title}}</h3>
+                        <p class="font-italic">{{spec.description}}</p>
+                        <p>{{spec.other_info}}</p>
+                      </div>
+                      <div class="col-lg-4 text-center order-1 order-lg-2">
+                        <img src="{{spec.img_url.url}}" alt="" class="img-fluid">
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+
+<!--              <div id="home" class="tab-pane fade in active show">-->
+<!--                <h3>HOME</h3>-->
+<!--                <p>Some content.</p>-->
+<!--              </div>-->
+<!--              <div id="menu1" class="tab-pane fade">-->
+<!--                <h3>Menu 1</h3>-->
+<!--                <p>Some content in menu 1.</p>-->
+<!--              </div>-->
+<!--              <div id="menu2" class="tab-pane fade">-->
+<!--                <h3>Menu 2</h3>-->
+<!--                <p>Some content in menu 2.</p>-->
+<!--              </div>-->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>

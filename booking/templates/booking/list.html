@@ -5,7 +5,9 @@
     <div>
     <div class="offset-2 col-md-8">
 
-        <h2>Booking Request Messages</h2>
+        <h2>Booking Request Messages
+            ({{ result_list.count }})
+        </h2>
              <div class="container bg-light">
 
                 <table class="table table-striped table-bordered">
@@ -23,6 +25,7 @@
                         <th>
                             # of persons
                         </th>
+                        <th></th>
                         <th></th>
                     </tr>
                     {% for item in result_list %}
@@ -46,13 +49,18 @@
                             </td>
 
                             <td>
-                                {{ item.msg }}
+                                <b>Message:</b>{{ item.msg }}
+                                <br>
+                                <b>Response:</b>{{item.response|linebreaks}}
                             </td>
                             <td>
                                 {{ item.persons_number }}
                             </td>
                             <td>
                                 <a href="{% url 'booking:respond' item.id %}">Respond</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'booking:close_booking' item.id %}">Close</a>
                             </td>
                         </tr>
                 {% endfor %}

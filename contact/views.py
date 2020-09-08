@@ -43,12 +43,6 @@ def index(request):
         }
     return redirect(reverse('home:index') + '#contact')
 
-    # return redirect('home:index#contact')
-
-
-
-# return redirect(reverse('home.views.home') + '#first')
-
 
 class ListView(PermissionRequiredMixin, generic.ListView):
     permission_required = 'contact.can.view.contact'
@@ -56,7 +50,7 @@ class ListView(PermissionRequiredMixin, generic.ListView):
     context_object_name = 'result_list'
 
     def get_queryset(self):
-        return ContactMessage.objects.filter(has_responded=False)
+        return ContactMessage.objects.filter(is_closed=False)
 
 
 class ContactMessageFormView(View):
@@ -100,7 +94,10 @@ def respond(request, mid):
     if request.method == 'POST':
         contact_message = ContactMessage.objects.get(id=mid)
         contact_message.has_responded = True
-        contact_message.response = request.POST.get('response')
+        if contact_message.response:
+            contact_message.response = request.POST.get('response') + '\n' + contact_message.response
+        else:
+            contact_message.response = request.POST.get('response')
 
         msg = request.POST.get('response')
         recipient = [contact_message.email]
@@ -119,3 +116,11 @@ def respond(request, mid):
             'contact_message': contact_message,
         }
     return render(request, 'contact/response.html',  content)
+
+
+def close_message(request, mid):
+
+    booking_message = ContactMessage.objects.get(id=mid)
+    booking_message.is_closed = True
+    booking_message.save()
+    return redirect('contact:list')

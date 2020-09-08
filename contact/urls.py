@@ -7,4 +7,5 @@ urlpatterns = [
     path('message', views.contact_message_form_view, name='message'),
     path('success', views.success, name='success'),
     path('respond/<int:mid>', views.respond, name='respond'),
+    path('close_message/<int:mid>', views.close_message, name='close_message'),
 ]

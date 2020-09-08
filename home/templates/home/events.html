@@ -1,0 +1,45 @@
+<!-- ======= Events Organized by restaurant ======= -->
+    <section id="events" class="events">
+
+      <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+
+          <p align="center">Events Coming up at 37 Eatery</p>
+        </div>
+        {% for res_event in restaurant_event_obj %}
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
+            <div class="about-img">
+
+                <img src="{{res_event.event_img.url}}" alt="" />
+
+            </div>
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+
+
+            <h3>{{res_event.event_type}}</h3>
+
+            <p class="font-italic">
+              {{res_event.event_desc}}
+            </p>
+            <ul>
+              <li><i class="icofont-check-circled"></i> Date: {{res_event.event_date}}</li>
+
+            </ul>
+
+
+            <ul>
+              <li><i class="icofont-check-circled"></i>Further details</li>
+                  {% for res_pack in res_event.package.all %}
+                <li><i class="icofont-check"></i> {{ res_pack.name }}</li>
+                {% endfor %}
+
+            </ul>
+          </div>
+        </div>
+          {% endfor %}
+      </div>
+    </section>
+<!-- End Restaurant Events -->

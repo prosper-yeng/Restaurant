@@ -46,10 +46,10 @@ class ContactMessage(models.Model):
     email = models.EmailField(max_length=100)
     subject = models.CharField(max_length=100)
     message = models.TextField(max_length=1000)
-    response = models.TextField(blank=True)
+    response = models.TextField(max_length=1000, blank=True)
     has_responded = models.BooleanField(default=False)
     has_message = models.BooleanField(default=True)
-    is_active = models.BooleanField(default=True)
+    is_closed = models.BooleanField(default=False)
     created_on = models.DateField(auto_now_add=True)
     modified_on = models.DateField(auto_now=True)
 

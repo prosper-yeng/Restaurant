@@ -1,0 +1,73 @@
+<section id="book-a-table" class="book-a-table">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Reservation</h2>
+          <p>Book a Table</p>
+
+        </div>
+            {% if booking_msg %}
+              <span class="text-success h4">{{ booking_msg }}</span>
+                  <br><br>
+              {% endif %}
+        {% if user.is_superuser %}
+            <div class="col-md-12 text-right">
+                <a href="{% url 'booking:list' %}">Booking Requests</a>
+            </div>
+            {% endif %}
+<!--        <form action="{% url 'booking:index' %}"  method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">-->
+         <form action="{% url 'booking:index' %}" method="post" role="form" class="contactForm">
+        {% csrf_token %}
+
+          <div class="form-row">
+            <div class="col-lg-4 col-md-6 form-group">
+              <input type="text" name="your_name" class="form-control" id="your_name" placeholder="Your  Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <div class="validate"></div>
+            </div>
+<!--            <div class="col-lg-4 col-md-6 form-group">-->
+<!--              <input type="text" name="last_name" class="form-control" id="last_name" placeholder="Your Last Name" data-rule="minlen:4" data-msg="Please enter your lastname">-->
+<!--              <div class="validate"></div>-->
+<!--            </div>-->
+            <div class="col-lg-4 col-md-6 form-group">
+              <input type="email" class="form-control" name="msgemail" id="msgemail" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+              <div class="validate"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group">
+              <input type="text" class="form-control" name="your_phone" id="your_phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <div class="validate"></div>
+            </div>
+<!--            <div class="col-lg-4 col-md-6 form-group">-->
+<!--              <input type="datetime" name="book_date" class="form-control" id="book_date" placeholder="Your Booking Date" data-rule="minlen:4" data-msg="Please enter table booking date">-->
+<!--              <div class="validate"></div>-->
+<!--            </div>-->
+
+             <div class="col-lg-4 col-md-6 form-group">
+              <input type="date" name="book_date" class="form-control" id="book_date"  data-rule="minlen:4" data-msg="Please enter table booking date">
+
+              <div class="validate"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group">
+              <input type="time" class="form-control" name="book_time" id="book_time" placeholder="Time" data-rule="minlen:4" data-msg="Please enter the time for your booking">
+              <div class="validate"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group">
+              <input type="number" class="form-control" name="persons_number" id="persons_number" placeholder="Number of Persons" data-rule="minlen:1" data-msg="Please Enter the Number of Persons">
+              <div class="validate"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" name="msg" rows="5" placeholder="Message"></textarea>
+            <div class="validate"></div>
+          </div>
+          <div class="mb-3">
+
+            <div class="error-message">
+
+            </div>
+
+          </div>
+          <div class="text-center"><button type="submit">Book a Table</button></div>
+        </form>
+
+      </div>
+    </section>

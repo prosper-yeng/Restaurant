@@ -1,0 +1,37 @@
+<section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
+            <div class="about-img">
+              {% if about_us %}
+                <img src="{{about_us.img_url.url}}" alt="" />
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+
+            {% if about_us %}
+            <h3>{{about_us.title}}</h3>
+
+            <p class="font-italic">
+              {{about_us.description}}
+            </p>
+            <ul>
+              <li><i class="icofont-check-circled"></i> Vision: {{about_us.vision}}</li>
+              <li><i class="icofont-check-circled"></i> Mission: {{about_us.mission}}</li>
+            </ul>
+            {% endif %}
+
+            <ul>
+              <li><i class="icofont-check-circled"></i>Core Values</li>
+            {% for core in coreObj %}
+                <li><i class="icofont-check"></i>{{core.name}} </li>
+            {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>

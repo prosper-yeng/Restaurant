@@ -7,7 +7,6 @@ from .models import Booking
 from .form import BookingForm, BookingMessageForm
 
 
-
 def success(request):
     content = {
         'message': 'Your email has been sent. If your email contain any enquiry, '
@@ -34,12 +33,6 @@ def index(request):
         pass
     return redirect(reverse('home:index') + '#booking')
 
-    # return redirect('home:index#contact')
-
-
-
-# return redirect(reverse('home.views.home') + '#first')
-
 
 class ListView(PermissionRequiredMixin, generic.ListView):
     permission_required = 'contact.can.view.contact'
@@ -47,7 +40,7 @@ class ListView(PermissionRequiredMixin, generic.ListView):
     context_object_name = 'result_list'
 
     def get_queryset(self):
-        return Booking.objects.filter(has_responded=False).order_by('-id')
+        return Booking.objects.filter(is_closed=False).order_by('-id')
 
 
 class BooingMessageFormView(View):
@@ -113,4 +106,12 @@ def respond(request, mid):
             'booking_message': booking_message,
         }
     return render(request, 'booking/response.html',  content)
+
+
+def close_booking(request, mid):
+
+    booking_message = Booking.objects.get(id=mid)
+    booking_message.is_closed = True
+    booking_message.save()
+    return redirect('booking:list')
 
