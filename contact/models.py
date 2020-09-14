@@ -11,7 +11,7 @@ DAYS_OF_WEEK = (
     ('Sunday', 'Sunday'),
 )
 
-# Create your models here.
+
 class Address(models.Model):
     location = models.CharField(max_length=200, null=True)
     begin_day = models.CharField(max_length=20, null=True, choices=DAYS_OF_WEEK)
@@ -20,12 +20,13 @@ class Address(models.Model):
     end_time = models.TimeField(auto_now=False)
     email = models.CharField(max_length=100, null=True)
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$',
-                                 message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
+                                 message="Phone number must be entered in the format: '+231666555444'. Up to 15 digits allowed.")
     phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True)  # validators should be a list
     status = models.BooleanField()
     created_on = models.DateField(auto_now_add=True, null=True)
 
-    class Meta: verbose_name_plural = 'Address'
+    class Meta:
+        verbose_name_plural = 'Address'
 
     def __str__(self):
         return {self.location} + ' ' + {self.email} + ' ' + {self.phone_number}

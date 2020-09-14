@@ -1,14 +1,15 @@
 from django.db import models
+from util.views import validate_file_size
 
 
-# Create your models here.
 class Gallery(models.Model):
-    img_url = models.FileField(upload_to='pics')
+    img_url = models.FileField(upload_to='pics', validators=[validate_file_size])
     status = models.BooleanField()
-    created_on = models.DateField(auto_now_add=True, null=True)
+    created_on = models.DateField(auto_now_add=True)
     modified_on = models.DateField(auto_now=True)
 
-    class Meta: verbose_name_plural = 'Gallery'
+    class Meta:
+        verbose_name_plural = 'Gallery'
 
     def __str__(self):
-        return f'{self.img_url}{self.status}'
+        return '%s %s' % (self.img_url, self.status)

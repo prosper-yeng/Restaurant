@@ -24,10 +24,6 @@
               <input type="text" name="your_name" class="form-control" id="your_name" placeholder="Your  Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
-<!--            <div class="col-lg-4 col-md-6 form-group">-->
-<!--              <input type="text" name="last_name" class="form-control" id="last_name" placeholder="Your Last Name" data-rule="minlen:4" data-msg="Please enter your lastname">-->
-<!--              <div class="validate"></div>-->
-<!--            </div>-->
             <div class="col-lg-4 col-md-6 form-group">
               <input type="email" class="form-control" name="msgemail" id="msgemail" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
               <div class="validate"></div>
@@ -36,11 +32,6 @@
               <input type="text" class="form-control" name="your_phone" id="your_phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
-<!--            <div class="col-lg-4 col-md-6 form-group">-->
-<!--              <input type="datetime" name="book_date" class="form-control" id="book_date" placeholder="Your Booking Date" data-rule="minlen:4" data-msg="Please enter table booking date">-->
-<!--              <div class="validate"></div>-->
-<!--            </div>-->
-
              <div class="col-lg-4 col-md-6 form-group">
               <input type="date" name="book_date" class="form-control" id="book_date"  data-rule="minlen:4" data-msg="Please enter table booking date">
 
@@ -66,8 +57,36 @@
             </div>
 
           </div>
-          <div class="text-center"><button type="submit">Book a Table</button></div>
+          <div class="text-center">
+              <button id="btn_book" type="submit">Book a Table</button>
+          </div>
         </form>
 
       </div>
     </section>
+
+<script>
+
+        $(document).ready(function() {
+
+            $("#btn_book").click(function () {
+                alert("me....");
+                return false;
+                // if ($("#start_date_id").val().length > 0 & $("#end_date_id").val().length == 0) {
+                //     alert("Please select the end date")
+                //     return  false;
+                // }
+                // else if ($("#end_date_id").val().length > 0 & $("#start_date_id").val().length == 0) {
+                //     alert("Please select the start date")
+                //     return  false;
+                // }
+                //
+                // var s_date = new Date($("#start_date_id").val());
+                // var e_date = new Date($("#end_date_id").val());
+                // if(Date.parse(s_date) > Date.parse(e_date)){
+                //    alert("The end date cannot be less than the start date.");
+                //    return false;
+                // }
+            })
+        });
+    </script>

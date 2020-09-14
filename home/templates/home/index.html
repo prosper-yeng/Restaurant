@@ -84,6 +84,23 @@
 
           </li>
 
+            <li>
+              <a class="btn dropdown-toggle text-left" data-toggle="dropdown" href="#">
+                Reports
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu bg-dark">
+                <li>
+                  <a href="{% url 'report:booking' %}">Bookings List</a>
+                </li>
+                <li>
+                  <a href="{% url 'report:inquiry' %}">Inquiries List</a>
+                </li>
+                <li>
+                  <a href="{% url 'report:event' %}">Events List</a>
+                </li>
+              </ul>
+            </li>
           {% endif %}
 
           <li><a href="#about">About</a></li>

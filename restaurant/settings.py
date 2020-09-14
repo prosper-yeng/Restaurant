@@ -48,6 +48,7 @@ else:
 # Application definition
 
 INSTALLED_APPS = [
+    'report',
     'event',
     'booking',
     'contact',
@@ -55,6 +56,7 @@ INSTALLED_APPS = [
     'about',
     'home',
     'menu',
+    'bootstrap4',
     'google_translate',
     'django.contrib.admin',
     'django.contrib.auth',
